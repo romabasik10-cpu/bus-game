@@ -1,0 +1,29 @@
+[gd_scene load_steps=15 format=3 uid="uid://00000000-0000-0000-0000-000000000000"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main_script"]
+[ext_resource type="PackedScene" path="res://scenes/world.tscn" id="2_world"]
+[ext_resource type="PackedScene" path="res://scenes/bus.tscn" id="3_bus"]
+[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="4_ui"]
+[ext_resource type="Environment" path="res://environments/day.env" id="5_environment"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="6_camera"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource( 1_main_script )
+
+[node name="World" type="Node3D" parent="."]
+instance = ExtResource( 2_world )
+
+[node name="Bus" type="CharacterBody3D" parent="."]
+instance = ExtResource( 3_bus )
+group = ["bus"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+instance = ExtResource( 4_ui )
+group = ["ui"]
+
+[node name="Camera" type="Camera3D" parent="."]
+instance = ExtResource( 6_camera )
+group = ["camera"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5_environment )

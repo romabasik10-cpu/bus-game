@@ -1,0 +1,110 @@
+[gd_scene load_steps=20 format=3 uid="uid://00000000-0000-0000-0000-000000000002"]
+
+[ext_resource type="PackedScene" path="res://../models/roads/straight_road.glb" id="1_road"]
+[ext_resource type="PackedScene" path="res://../models/roads/bus_stop.glb" id="2_bus_stop"]
+[ext_resource type="PackedScene" path="res://../models/buildings/house.glb" id="3_house"]
+[ext_resource type="PackedScene" path="res://../models/buildings/apartment.glb" id="4_apartment"]
+[ext_resource type="PackedScene" path="res://../models/buildings/shop.glb" id="5_shop"]
+[ext_resource type="PackedScene" path="res://../models/landscape/tree.glb" id="6_tree"]
+[ext_resource type="PackedScene" path="res://../models/landscape/bench.glb" id="7_bench"]
+[ext_resource type="PackedScene" path="res://../models/landscape/lamp_post.glb" id="8_lamp"]
+[ext_resource type="PackedScene" path="res://../models/landscape/grass_patch.glb" id="9_grass"]
+[ext_resource type="PackedScene" path="res://../models/characters/passenger.glb" id="10_passenger"]
+[ext_resource type="PackedScene" path="res://../models/roads/traffic_light.glb" id="11_traffic_light"]
+[ext_resource type="PackedScene" path="res://../models/vehicles/car.glb" id="12_car"]
+
+[node name="World" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="./Ground"]
+shape = BoxShape3D(100.0, 100.0, 0.1)
+
+[node name="Grass" type="Node3D" parent="."]
+instance = ExtResource( 9_grass )
+scale = Vector3(20, 20, 1)
+
+[node name="MainRoad" type="Node3D" parent="."]
+instance = ExtResource( 1_road )
+position = Vector3(0, 0, 0)
+
+[node name="Road2" type="Node3D" parent="."]
+instance = ExtResource( 1_road )
+position = Vector3(0, 0, 10)
+
+[node name="Road3" type="Node3D" parent="."]
+instance = ExtResource( 1_road )
+position = Vector3(0, 0, -10)
+
+[node name="BusStop1" type="Node3D" parent="."]
+instance = ExtResource( 2_bus_stop )
+position = Vector3(5, 0, 5)
+
+[node name="BusStop2" type="Node3D" parent="."]
+instance = ExtResource( 2_bus_stop )
+position = Vector3(-5, 0, -5)
+
+[node name="House1" type="Node3D" parent="."]
+instance = ExtResource( 3_house )
+position = Vector3(15, 0, 5)
+
+[node name="House2" type="Node3D" parent="."]
+instance = ExtResource( 3_house )
+position = Vector3(-15, 0, -5)
+
+[node name="Apartment1" type="Node3D" parent="."]
+instance = ExtResource( 4_apartment )
+position = Vector3(25, 0, 0)
+
+[node name="Apartment2" type="Node3D" parent="."]
+instance = ExtResource( 4_apartment )
+position = Vector3(-25, 0, 0)
+
+[node name="Shop1" type="Node3D" parent="."]
+instance = ExtResource( 5_shop )
+position = Vector3(10, 0, -10)
+
+[node name="Tree1" type="Node3D" parent="."]
+instance = ExtResource( 6_tree )
+position = Vector3(20, 0, 10)
+
+[node name="Tree2" type="Node3D" parent="."]
+instance = ExtResource( 6_tree )
+position = Vector3(-20, 0, 10)
+
+[node name="Tree3" type="Node3D" parent="."]
+instance = ExtResource( 6_tree )
+position = Vector3(20, 0, -10)
+
+[node name="Tree4" type="Node3D" parent="."]
+instance = ExtResource( 6_tree )
+position = Vector3(-20, 0, -10)
+
+[node name="Bench1" type="Node3D" parent="."]
+instance = ExtResource( 7_bench )
+position = Vector3(8, 0, 8)
+
+[node name="LampPost1" type="Node3D" parent="."]
+instance = ExtResource( 8_lamp )
+position = Vector3(-8, 0, 8)
+
+[node name="TrafficLight1" type="Node3D" parent="."]
+instance = ExtResource( 11_traffic_light )
+position = Vector3(0, 0, 20)
+
+[node name="Car1" type="Node3D" parent="."]
+instance = ExtResource( 12_car )
+position = Vector3(3, 0, 15)
+rotation = Vector3(0, 1.57, 0)
+
+[node name="Car2" type="Node3D" parent="."]
+instance = ExtResource( 12_car )
+position = Vector3(-3, 0, -15)
+rotation = Vector3(0, 1.57, 0)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="PassengerSpawn1" type="Marker3D" parent="./SpawnPoints"]
+position = Vector3(5, 0, 5)
+
+[node name="PassengerSpawn2" type="Marker3D" parent="./SpawnPoints"]
+position = Vector3(-5, 0, -5)

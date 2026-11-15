@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://00000000-0000-0000-0000-000000000004"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_ui_script"]
+[ext_resource type="Font" path="res://assets/fonts/title.font" id="2_title_font"]
+[ext_resource type="Font" path="res://assets/fonts/score.font" id="3_score_font"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 1_ui_script )
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size = Vector2(1920, 1080)
+
+[node name="ScorePanel" type="Panel" parent="./HUD"]
+anchor_top = 0.0
+anchor_right = 1.0
+position = Vector2(1720, 20)
+size = Vector2(180, 60)
+self_modulate = Color(0, 0, 0, 0.5)
+
+[node name="ScoreLabel" type="Label" parent="./HUD/ScorePanel"]
+text = "SCORE:"
+position = Vector2(10, 5)
+font = ExtResource( 3_score_font )
+font_size = 16
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="ScoreValue" type="Label" parent="./HUD/ScorePanel"]
+text = "0"
+position = Vector2(10, 25)
+font = ExtResource( 3_score_font )
+font_size = 20
+self_modulate = Color(1, 1, 0, 1)
+
+[node name="TimePanel" type="Panel" parent="./HUD"]
+anchor_top = 0.0
+anchor_right = 1.0
+position = Vector2(1720, 90)
+size = Vector2(180, 60)
+self_modulate = Color(0, 0, 0, 0.5)
+
+[node name="TimeLabel" type="Label" parent="./HUD/TimePanel"]
+text = "TIME:"
+position = Vector2(10, 5)
+font = ExtResource( 3_score_font )
+font_size = 16
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="TimeValue" type="Label" parent="./HUD/TimePanel"]
+text = "5:00"
+position = Vector2(10, 25)
+font = ExtResource( 3_score_font )
+font_size = 20
+self_modulate = Color(0, 1, 0, 1)
+
+[node name="PassengersPanel" type="Panel" parent="./HUD"]
+anchor_bottom = 1.0
+anchor_right = 1.0
+position = Vector2(1720, 980)
+size = Vector2(180, 60)
+self_modulate = Color(0, 0, 0, 0.5)
+
+[node name="PassengersLabel" type="Label" parent="./HUD/PassengersPanel"]
+text = "PASSENGERS:"
+position = Vector2(10, 5)
+font = ExtResource( 3_score_font )
+font_size = 14
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="PassengersValue" type="Label" parent="./HUD/PassengersPanel"]
+text = "0/20"
+position = Vector2(10, 25)
+font = ExtResource( 3_score_font )
+font_size = 18
+self_modulate = Color(1, 0.5, 0, 1)
+
+[node name="SpeedPanel" type="Panel" parent="./HUD"]
+anchor_bottom = 1.0
+anchor_right = 1.0
+position = Vector2(1720, 910)
+size = Vector2(180, 60)
+self_modulate = Color(0, 0, 0, 0.5)
+
+[node name="SpeedLabel" type="Label" parent="./HUD/SpeedPanel"]
+text = "SPEED:"
+position = Vector2(10, 5)
+font = ExtResource( 3_score_font )
+font_size = 14
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="SpeedValue" type="Label" parent="./HUD/SpeedPanel"]
+text = "0 km/h"
+position = Vector2(10, 25)
+font = ExtResource( 3_score_font )
+font_size = 18
+self_modulate = Color(0, 1, 1, 1)
+
+[node name="TitleScreen" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size = Vector2(1920, 1080)
+self_modulate = Color(0, 0, 0, 0.8)
+
+[node name="TitleLabel" type="Label" parent="./TitleScreen"]
+text = "CARTOON BUS GAME"
+position = Vector2(640, 300)
+size = Vector2(640, 100)
+align = 1
+valign = 1
+font = ExtResource( 2_title_font )
+font_size = 72
+self_modulate = Color(1, 1, 0, 1)
+
+[node name="StartButton" type="Button" parent="./TitleScreen"]
+text = "START GAME"
+position = Vector2(810, 500)
+size = Vector2(300, 80)
+font_size = 24
+pressed.connect = [ExtResource( 1_ui_script ), "_on_start_button_pressed"]
+
+[node name="QuitButton" type="Button" parent="./TitleScreen"]
+text = "QUIT"
+position = Vector2(810, 600)
+size = Vector2(300, 80)
+font_size = 24
+pressed.connect = [ExtResource( 1_ui_script ), "_on_quit_button_pressed"]
+
+[node name="GameOverScreen" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size = Vector2(1920, 1080)
+self_modulate = Color(0, 0, 0, 0.8)
+
+[node name="GameOverLabel" type="Label" parent="./GameOverScreen"]
+text = "GAME OVER"
+position = Vector2(640, 300)
+size = Vector2(640, 100)
+align = 1
+valign = 1
+font = ExtResource( 2_title_font )
+font_size = 72
+self_modulate = Color(1, 0, 0, 1)
+
+[node name="FinalScoreLabel" type="Label" parent="./GameOverScreen"]
+text = "SCORE: 0"
+position = Vector2(640, 450)
+size = Vector2(640, 60)
+align = 1
+valign = 1
+font = ExtResource( 3_score_font )
+font_size = 48
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="RestartButton" type="Button" parent="./GameOverScreen"]
+text = "PLAY AGAIN"
+position = Vector2(810, 600)
+size = Vector2(300, 80)
+font_size = 24
+pressed.connect = [ExtResource( 1_ui_script ), "_on_restart_button_pressed"]

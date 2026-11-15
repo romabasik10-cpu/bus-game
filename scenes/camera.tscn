@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://00000000-0000-0000-0000-000000000006"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_camera_script"]
+
+[node name="Camera" type="Camera3D"]
+script = ExtResource( 1_camera_script )
+
+fov = 70.0
+near = 0.1
+far = 1000.0
+position = Vector3(0, 5, 8)
+rotation = Vector3(0.3, 0, 0)
+
+[node name="SpringArm" type="SpringArm3D" parent="."]
+length = 8.0
+
+[node name="CameraPivot" type="Node3D" parent="./SpringArm"]
+position = Vector3(0, 2, 0)
+
+[node name="ActualCamera" type="Camera3D" parent="./SpringArm/CameraPivot"]
+cull_mask = 1
+fov = 70.0
+near = 0.1
+far = 1000.0
+current = true
